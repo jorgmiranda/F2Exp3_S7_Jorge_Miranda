@@ -1,0 +1,145 @@
+<app-navbar></app-navbar>
+
+<main>
+    <div *ngIf="this.seccion === 'estrategia'">
+        <div class="section-header">
+            <h1>Juegos de mesa de Estrategia</h1>
+            <p>Contenido de juegos de mesa de Estrategia</p>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 mb-4">
+                <div class="card card-content">
+                    <div class="card-img-container">
+                        <img src="../../../assets/img/estrategia/ajedrez.jpg" class="card-img-top slide-left" alt="Ajedrez">
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center text-center">
+                        <h5 class="card-title">Nombre: Ajedrez</h5>
+                        <p class="card-text">Precio: $5.000</p>
+                        <p class="card-text">Descripción breve del juego 1.</p>
+                        <p class="card-text">Descuento: No</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 mb-4">
+                <div class="card card-content">
+                    <div class="card-img-container">
+                        <img src="../../../assets/img/estrategia/Incognita.jpg" class="card-img-top slide-left" alt="Incognita">
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center text-center">
+                        <h5 class="card-title">Nombre: Incognita</h5>
+                        <p class="card-text">Precio: $10.000</p>
+                        <p class="card-text">Descripción breve del juego 2.</p>
+                        <p class="card-text">Descuento: No</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="this.seccion === 'familiar'">
+        <div class="section-header">
+            <h1>Juegos de mesa Familiar</h1>
+            <p>Contenido de juegos de mesa familiares</p>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 mb-4">
+                <div class="card card-content">
+                    <div class="card-img-container">
+                        <img src="../../../assets/img/familiar/Cluedo.jpg" class="card-img-top rotate" alt="Cluedo">
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center text-center">
+                        <h5 class="card-title">Nombre: Cluedo</h5>
+                        <p class="card-text">Precio: $20.000</p>
+                        <p class="card-text">Descripción breve del juego 1.</p>
+                        <p class="card-text">Descuento: No</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 mb-4">
+                <div class="card card-content">
+                    <div class="card-img-container">
+                        <img src="../../../assets/img/familiar/unanimo.jpg" class="card-img-top rotate" alt="Unanimo">
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center text-center">
+                        <h5 class="card-title">Nombre: Unanimo</h5>
+                        <p class="card-text">Precio: $12.000</p>
+                        <p class="card-text">Descripción breve del juego 2.</p>
+                        <p class="card-text">Descuento: No</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="this.seccion === 'cartas'">
+        <div class="section-header">
+            <h1>Juegos de mesa de Cartas</h1>
+            <p>Contenido de juegos de mesa de Cartas</p>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-6 mb-4">
+                <div class="card card-content">
+                    <div class="card-img-container">
+                        <img src="../../../assets/img/cartas/Uno.jpg" class="card-img-top fade-in" alt="Uno">
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center text-center">
+                        <h5 class="card-title">Nombre: Uno</h5>
+                        <p class="card-text">Precio: $10.000</p>
+                        <p class="card-text">Descripción breve del juego 1.</p>
+                        <p class="card-text">Descuento: No</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 mb-4">
+                <div class="card card-content">
+                    <div class="card-img-container">
+                        <img src="../../../assets/img/cartas/dos.jpg" class="card-img-top fade-in" alt="Dos">
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center text-center">
+                        <h5 class="card-title">Nombre: Dos</h5>
+                        <p class="card-text">Precio: $10.000</p>
+                        <p class="card-text">Descripción breve del juego 2.</p>
+                        <p class="card-text">Descuento: No</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="this.seccion === 'party'">
+        <div class="section-header">
+            <h1>Juegos de Fiesta/Party</h1>
+            <p>Contenido de juegos de fiesta/party</p>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 mb-4">
+                <div class="card card-content">
+                    <div class="card-img-container">
+                        <img src="../../../assets/img/party/gatos explosivos.png" class="card-img-top zoom-in" alt="zoom-in">
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center text-center">
+                        <h5 class="card-title">Nombre: Gatos Explosivos</h5>
+                        <p class="card-text">Precio: $10.000</p>
+                        <p class="card-text">Descripción breve del juego 1.</p>
+                        <p class="card-text">Descuento: No</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 mb-4">
+                <div class="card card-content">
+                    <div class="card-img-container">
+                        <img src="../../../assets/img/party/Beber.jpg" class="card-img-top zoom-in" alt="Juego para Beber">
+                    </div>
+                    <div class="card-body d-flex flex-column align-items-center text-center">
+                        <h5 class="card-title">Nombre: Juego para Beber</h5>
+                        <p class="card-text">Precio: $12.000</p>
+                        <p class="card-text">Descripción breve del juego 2.</p>
+                        <p class="card-text">Descuento: No</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 Mi Sitio Web. Todos los derechos reservados.</p>
+</footer>
