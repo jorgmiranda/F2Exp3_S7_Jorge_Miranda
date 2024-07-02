@@ -1,1 +1,116 @@
-<p>lista-personas works!</p>
+<app-navbar></app-navbar>
+<div class="container mt-3">
+    <h2>Lista de Personas</h2>
+    <hr>
+
+    <div *ngIf="personas && personas.length > 0; else noData">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre Completo</th>
+                    <th>Correo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let persona of personas">
+                    <td>{{ persona.id }}</td>
+                    <td>{{ persona.nombreCompleto }}</td>
+                    <td>{{ persona.correoUsuario }}</td>
+                    <td>
+                        <button class="btn btn-primary" (click)="abrirModal(persona)">Modificar</button>
+                        <button class="btn btn-danger" (click)="eliminar(persona)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <ng-template #noData>
+        <p>No hay datos disponibles</p>
+    </ng-template>
+
+    <button class="btn btn-primary mt-2" (click)="abrirModal()">Agregar Persona</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="personaModal" tabindex="-1" aria-labelledby="personaModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="personaModalLabel">{{modalTitle}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="mantenedorForm" (ngSubmit)="submitForm()">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="mb-3">
+                                    <label for="nombreCompleto" class="form-label">Nombre Completo*:</label>
+                                    <input type="text" class="form-control" id="nombreCompleto" aria-describedby="nombreCompletoHelp" formControlName="nombreCompleto">
+                                    <div id="nombreCompletoHelp" class="form-text" *ngIf="mantenedorForm.get('nombreCompleto')?.hasError('required')">Este campo es obligatorio</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="mb-3">
+                                    <label for="nombreUsuario" class="form-label">Nombre de Usuario*:</label>
+                                    <input type="text" class="form-control" id="nombreUsuario" aria-describedby="nombreUsuarioHelp" formControlName="nombreUsuario" name="nombreUsuario">
+                                    <div id="nombreUsuarioHelp" class="form-text" *ngIf="mantenedorForm.get('nombreUsuario')?.hasError('required')">Este campo es obligatorio</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="mb-3">
+                                    <label for="correoUsuario" class="form-label">Correo*:</label>
+                                    <input type="email" class="form-control" id="correoUsuario" aria-describedby="emailHelp" formControlName="correoUsuario" name="correoUsuario">
+                                    <div id="emailHelp" class="form-text" *ngIf="mantenedorForm.get('correoUsuario')?.hasError('required')">Este campo es obligatorio</div>
+                                    <div id="emailHelp" class="form-text" *ngIf="mantenedorForm.get('correoUsuario')?.hasError('email')">El Correo no es valido</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="mb-3">
+                                    <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento*:</label>
+                                    <input type="date" class="form-control" id="fechaNacimiento"  aria-describedby="fechaHelp" formControlName="fechaNacimiento" name="fechaNacimiento">
+                                    <div id="fechaHelp" class="form-text" *ngIf="mantenedorForm.get('fechaNacimiento')?.hasError('required')">Este campo es obligatorio. Debes ser mayor de 13 años.</div>
+                                    <div id="fechaHelp" class="form-text" *ngIf="mantenedorForm.get('fechaNacimiento')?.hasError('menorDeEdad')">Debes ser mayor de 13 años para registrarte al sitio.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="mb-3">
+                                    <label for="contrasenaUsuario1" class="form-label">Contraseña*:</label>
+                                    <input type="password" class="form-control" id="contrasenaUsuario1" aria-describedby="passHelp1" formControlName="contrasenaUsuario1" name="contrasenaUsuario1">
+                                    <div id="passHelp1" class="form-text" *ngIf="mantenedorForm.get('contrasenaUsuario1')?.hasError('required')">Este campo es obligatorio</div>
+                                    <div id="passHelp1" class="form-text" *ngIf="mantenedorForm.get('contrasenaUsuario1')?.hasError('contrasenaInvalida')">
+                                        La contraseña debe contener entre 6 y 18 caracteres, al menos un número y una letra mayúscula.
+                                      </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="mb-3">
+                                    <label for="contrasenaUsuario2" class="form-label">Validar Contraseña*:</label>
+                                    <input type="password" class="form-control" id="contrasenaUsuario2" aria-describedby="passHelp2" formControlName="contrasenaUsuario2" name="contrasenaUsuario2">
+                                    <div id="passHelp2" class="form-text" *ngIf="mantenedorForm.get('contrasenaUsuario2')?.hasError('required')">Este campo es obligatorio</div>
+                                    <div id="passHelp2" class="form-text" *ngIf="mantenedorForm.hasError('contrasenasNoCoinciden')">
+                                        Las contraseñas no coinciden.
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="direccionDespacho" class="form-label">Dirección de despacho:</label>
+                            <input type="text" class="form-control" id="direccionDespacho" formControlName="direccionDespacho" name="direccionDespacho">
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
+                
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
